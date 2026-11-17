@@ -1,0 +1,15 @@
+# Demo workspace (created by setup.sh, rebuilt on every run)
+local-ai-kb/
+local-ai-kb.prev-*/
+
+# Obsidian
+.obsidian/
+
+# Python
+__pycache__/
+*.pyc
+
+# IDE and OS
+.idea/
+.vscode/
+.DS_Store
