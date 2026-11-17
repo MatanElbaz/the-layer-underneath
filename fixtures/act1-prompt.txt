@@ -1,0 +1,3 @@
+Write a Python function that reads all .md files in a directory,
+extracts the H1 title from each, and returns a dict of filename -> title.
+Handle files with no H1. Keep it short.

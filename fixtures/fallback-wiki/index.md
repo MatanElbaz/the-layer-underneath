@@ -1,0 +1,6 @@
+- [[gpt-oss-20b]] - A 20B parameter Mixture of Experts model from OpenAI.
+- [[qwen3-coder-30b]] - A 30B parameter Mixture of Experts model from Alibaba.
+- [[quantization]] - Techniques to reduce model size and memory.
+- [[mixture-of-experts]] - Model architecture using multiple expert sub‑models.
+- [[memory-requirements]] - How much RAM a model needs.
+- [[reading-list]] - Sources used for the wiki.
