@@ -8,24 +8,7 @@ The output below was captured on an Apple M4 MacBook with 24 GB. Wording and tim
 
 ## 0. Install
 
-You need four things. Obsidian is optional but it makes the demo much easier to follow.
-
-| Tool | macOS | Linux | Windows |
-|---|---|---|---|
-| **Ollama** (runs the model) | Download from [ollama.com/download](https://ollama.com/download), or `brew install ollama` then `brew services start ollama` | `curl -fsSL https://ollama.com/install.sh \| sh` | Installer at [ollama.com/download](https://ollama.com/download). Not tested with this demo |
-| **Python 3.9+** and **git** | `xcode-select --install` installs both, or use Homebrew | From your package manager (`python3`, `git`) | Not tested. Try WSL and follow the Linux column |
-| **Obsidian** (optional) | [obsidian.md/download](https://obsidian.md/download) | same | same |
-
-`setup.sh` is a bash script, so it runs on macOS, Linux and WSL.
-
-Check that Ollama is up:
-
-```bash
-ollama --version
-curl http://127.0.0.1:11434/api/version
-```
-
-The second command should print a small JSON object with a version. If it fails, start Ollama (open the app, or `ollama serve` in another terminal).
+Follow [Install what you need](../README.md#install-what-you-need) in the README: Ollama, Python and git, and optionally Obsidian, with commands for macOS, Linux and Windows. Then run the checks at the end of that section.
 
 Memory: about 16 GB of RAM, 13 GB of disk. Close Docker Desktop and heavy browser tabs before you start. On a 24 GB Mac they made the demo about four times slower.
 

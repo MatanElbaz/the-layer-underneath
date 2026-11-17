@@ -11,7 +11,7 @@ This is the companion code for the talk **The Layer Underneath: Local Models & A
 
 ## Quick start
 
-You need [Ollama](https://ollama.com/download) running, Python 3.9 or newer, git, about 16 GB of RAM and 13 GB of free disk. [Requirements](#requirements) has the details.
+You need [Ollama](https://ollama.com/download) running, Python 3.9 or newer, git, about 16 GB of RAM and 13 GB of free disk. Starting from an empty machine? [Install what you need](#install-what-you-need) is next, and [Requirements](#requirements) has the details.
 
 ```bash
 git clone https://github.com/MatanElbaz/the-layer-underneath.git
@@ -21,6 +21,54 @@ python3 agent.py
 ```
 
 At the `you ›` prompt, type the commands below one after another. [docs/walkthrough.md](docs/walkthrough.md) explains each step, what to look for, and how to install everything from zero, including Obsidian.
+
+## Install what you need
+
+Three tools are required: Ollama (it runs the model), Python and git. Obsidian is optional, and it is the nicest way to watch the agent's memory grow.
+
+You do **not** download the model yourself. `./setup.sh` pulls it (13 GB, one time).
+
+### 1. Ollama
+
+Ollama runs the model on your machine and serves it at `http://127.0.0.1:11434`. Its download page is [ollama.com/download](https://ollama.com/download).
+
+| OS | How to install |
+|---|---|
+| **macOS** | Download the macOS app from [ollama.com/download](https://ollama.com/download), install it and open it once so it starts. Or with Homebrew: `brew install ollama`, then `brew services start ollama`. |
+| **Linux** | `curl -fsSL https://ollama.com/install.sh \| sh` |
+| **Windows** | The installer from [ollama.com/download](https://ollama.com/download), or in PowerShell: `irm https://ollama.com/install.ps1 \| iex`. This demo was not tested on Windows. `setup.sh` needs bash (WSL or Git Bash) and has to reach Ollama at `127.0.0.1:11434`. |
+
+The Linux and PowerShell commands download a script from ollama.com and run it. Read the script first if you prefer.
+
+### 2. Python 3.9 or newer, and git
+
+| OS | How to install |
+|---|---|
+| **macOS** | `xcode-select --install` installs both. Or use [Homebrew](https://brew.sh): `brew install python git`. |
+| **Debian or Ubuntu** | `sudo apt install python3 git` |
+| **Other Linux** | Use your package manager for `python3` and `git`. |
+| **Windows** | Install [Python](https://www.python.org/downloads/) and [git](https://git-scm.com/downloads), and use WSL or Git Bash for the scripts. Not tested. |
+
+Nothing to `pip install`: `agent.py` uses only the standard library.
+
+### 3. Obsidian (optional)
+
+1. Download Obsidian for Windows, Mac or Linux from [obsidian.md/download](https://obsidian.md/download) and install it.
+2. After `./setup.sh` has created the workspace, start Obsidian. On the first screen, find **Open folder as vault**, click **Open**, and choose the `local-ai-kb` folder inside this repository.
+3. Open the graph: open the command palette and run **Graph view: Open graph view**.
+
+Without Obsidian everything still works. Look at the files in `local-ai-kb/wiki/` with any editor, or with `ls` and `cat`.
+
+### 4. Check that everything is ready
+
+```bash
+ollama --version
+curl http://127.0.0.1:11434/api/version
+python3 --version
+git --version
+```
+
+Each command should print a version. The `curl` line should print a small JSON object, which means Ollama is running. If it fails, start Ollama (open the app, or run `ollama serve` in another terminal). Then continue with the [Quick start](#quick-start) above.
 
 ## What you will do
 
@@ -45,12 +93,12 @@ Open `local-ai-kb/` as a vault in [Obsidian](https://obsidian.md/download) and k
 
 | What | Needed |
 |---|---|
-| [Ollama](https://ollama.com/download) | Installed and running |
-| Python | 3.9 or newer. Standard library only, nothing to `pip install` |
+| [Ollama](https://ollama.com/download) | Installed and running ([how](#1-ollama)) |
+| Python | 3.9 or newer. Standard library only, nothing to `pip install` ([how](#2-python-39-or-newer-and-git)) |
 | git | Any recent version |
 | Memory | About 16 GB. The model card says `gpt-oss-20b` runs within 16 GB, and `agent.py` adds a 16K-token context on top. Tested on 24 GB |
 | Disk | 13 GB for the model |
-| [Obsidian](https://obsidian.md/download) | Optional. Any markdown viewer works, or just `cat` |
+| [Obsidian](https://obsidian.md/download) | Optional. Any markdown viewer works, or just `cat` ([how](#3-obsidian-optional)) |
 | OS | `setup.sh` is a bash script: macOS or Linux, or WSL on Windows. Tested on macOS only |
 
 Close memory-hungry apps first (Docker Desktop, many browser tabs). On a 24 GB Mac they made the demo about four times slower.
